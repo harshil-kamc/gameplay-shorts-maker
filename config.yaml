@@ -82,20 +82,19 @@ editor:
   design_scenes: false         # no AI/stock images in the middle of gameplay clips
   max_design_scenes: 0
   resolution: [1080, 1920]     # 9:16 vertical
-  reframe: "smart"             # smart = don't crop 2-person shots (show both, phone-friendly); punch in only on a lone face
-                               #   "face" = always punch-in crop;  "blur"/"black" = always fit whole frame
+  reframe: "blur"              # gameplay source: fit whole frame, no face detection over long source
   background: "blur"           # blur | black  (the fitted-frame style: blurred fill vs black bars)
   motion_zoom: true            # gentle slow zoom-in (Ken Burns) so wide gameplay shots feel alive
   motion_amount: 0.10          # how far it zooms over the clip (0.10 = 10%); 0 or motion_zoom:false to disable
-  punch_zoom: true             # quick zoom PUNCH when an emphasis word is spoken (retention spike)
-  flash_transitions: true      # white-flash accents at the planner's topic shifts (hard-cut feel)
+  punch_zoom: false            # no emphasis-word zoom in gameplay clips
+  flash_transitions: false     # no flash accents in gameplay clips
   broll: false                 # overlay Pexels stock photos at the planner's b-roll moments
   max_broll: 2                 # at most this many b-roll images per clip (needs PEXELS_API_KEY in .env)
   broll_video: false           # prefer moving stock VIDEO b-roll (Pexels) over still photos
-  track_face_per_shot: true    # re-center the crop on the face at every camera cut
-  speaker_cuts: true           # 2-person shots: alternate host-cam / guest-cam crops
-  camera_cuts: true            # fake-multicam: hard zoom cuts (wide<->close) at sentence ends + whoosh
-  scene_cuts: true             # cut on the source's REAL camera changes (PySceneDetect), not just sentence ends
+  track_face_per_shot: false   # gameplay source: no face re-centering
+  speaker_cuts: false          # no podcast host-cam alternation
+  camera_cuts: false           # no fake-multicam cuts in gameplay clips
+  scene_cuts: false            # skip PySceneDetect on long gameplay source
   grade: true                  # cinematic color grade (contrast + saturation + vignette)
   progress_bar: true           # thin retention bar filling along the bottom
   cta: false                   # keep the last seconds as gameplay

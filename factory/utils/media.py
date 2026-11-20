@@ -49,7 +49,7 @@ def download(url: str) -> tuple[Path, str, str]:
 
     out_tmpl = str(WORK / "%(id)s.%(ext)s")
     opts = {
-        "format": "bv*[height<=1080]+ba/b[height<=1080]",
+        "format": "bv*[height<=720][ext=mp4]+ba[ext=m4a]/bv*[height<=720]+ba/b[height<=720]",
         "merge_output_format": "mp4",
         "outtmpl": out_tmpl,
         "quiet": True,
